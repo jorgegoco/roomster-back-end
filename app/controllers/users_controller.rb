@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  
   before_action :authenticate_admin_request!
   skip_before_action :authenticate_request, only: [:create]
   before_action :set_user, only: [:destroy]
@@ -42,8 +41,8 @@ class UsersController < ApplicationController
   end
 
   def authenticate_admin_request!
-    unless @current_user && (@current_user.role == 'admin' || action_name == 'create')
-      render json: { error: 'Not Authorized' }, status: :unauthorized
-    end
+    return if @current_user && (@current_user.role == 'admin' || action_name == 'create')
+
+    render json: { error: 'Not Authorized' }, status: :unauthorized
   end
 end
