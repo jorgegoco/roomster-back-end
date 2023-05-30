@@ -1,7 +1,8 @@
 class Api::V1::ReservationsController < ApplicationController
+
+  # GET /api/v1/reservations
   def index
-    @user = current_user
-    @reservations = Reservation.includes(:room).where(user_id: @user.id).as_json(include: { room: {
+    @reservations = Reservation.includes(:room).where(user_id: @current_user.id).as_json(include: { room: {
                                                                                    only: %i[
                                                                                      name city
                                                                                    ]
@@ -9,16 +10,18 @@ class Api::V1::ReservationsController < ApplicationController
 
     render json: @reservations
   end
-
+  
+  # POST /api/v1/reservations
   def create
-    @reservation = Reservation.new(reservation_params.merge(user_id: current_user.id))
+    @reservation = Reservation.new(reservation_params.merge(user_id: @current_user.id))
     if @reservation.save
       render json: @reservation, status: :created
     else
       render json: @reservation.errors, status: :unprocessable_entity
     end
   end
-
+  
+  # DELETE /api/v1/reervations/:id
   def destroy
     @reservation = Reservation.find(params[:id])
 
@@ -33,9 +36,5 @@ class Api::V1::ReservationsController < ApplicationController
 
   def reservation_params
     params.permit(:start_date, :end_date, :room_id)
-  end
-
-  def current_user
-    @current_user ||= User.find_by(id: session[:user_id])
   end
 end

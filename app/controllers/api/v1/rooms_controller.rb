@@ -11,7 +11,8 @@ class Api::V1::RoomsController < ApplicationController
   def show
     render json: @room
   end
-
+  
+  # POST /api/v1/rooms/
   def create
     if @current_user.role == 'user'
       render(json: { error: 'User not allowed to create rooms' }, status: 401)
