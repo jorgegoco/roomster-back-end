@@ -11,7 +11,11 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :reservations, only: [:index, :create, :destroy]
       resources :rooms, only: [:index, :show, :create, :destroy]
-      resources :users, only: [:show]
+      resources :users, only: [] do
+        collection do
+          get 'me', to: 'users#me'
+        end
+      end
     end
   end
   resources :users

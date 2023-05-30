@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   end
 
   def authenticate_admin_request!
-    unless current_user && (current_user.role == 'admin' || action_name == 'create')
+    unless @current_user && (@current_user.role == 'admin' || action_name == 'create')
       render json: { error: 'Not Authorized' }, status: :unauthorized
     end
   end

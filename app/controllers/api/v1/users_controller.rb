@@ -1,6 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-  def show
-    @user = User.find(params[:id])
-    render json: @user
+  def me
+    render json: @current_user.as_json(only: [:name, :role])
   end
 end
