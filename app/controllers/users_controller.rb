@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_admin_request!
   skip_before_action :authenticate_request, only: [:create]
-  before_action :set_user, only: [:destroy]
+  before_action :authenticate_admin!, except: [:create]
 
   def index
     @users = User.all
@@ -18,30 +17,14 @@ class UsersController < ApplicationController
     end
   end
 
-  def update
-    if @user.update(user_params)
-      render json: @user
-    else
-      render json: @user.errors, status: :unprocessable_entity
-    end
-  end
-
-  def destroy
-    @user.destroy
-  end
-
   private
-
-  def set_user
-    @user = User.find(params[:id])
-  end
 
   def user_params
     params.permit(:name, :email, :password)
   end
 
-  def authenticate_admin_request!
-    return if @current_user && (@current_user.role == 'admin' || action_name == 'create')
+  def authenticate_admin!
+    return if @current_user && @current_user.role == 'admin'
 
     render json: { error: 'Not Authorized' }, status: :unauthorized
   end
