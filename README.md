@@ -74,10 +74,10 @@
 
 ### Key Features <a name="key-features"></a>
 
-- **[Rooms List endpoint]**
-- **[Devise authentication to access Reservations]**
-- **[Authenticated Users can add/mark as removed a room]**
-- **[Authenticated Users can reserve/remove a room]**
+- **Rooms List endpoint**
+- **Devise authentication to access Reservations**
+- **Authenticated Users can add/mark as removed a room**
+- **Authenticated Users can reserve/remove a room**
 
 ## <img src="https://emojipedia-us.s3.amazonaws.com/source/microsoft-teams/337/spiral-notepad_1f5d2-fe0f.png" width="23" height="20"/> API Documentation<a name="api-docs"></a>
 
@@ -88,7 +88,7 @@
 
 <!-- React Frontend -->
 ## <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/539px-React-icon.svg.png" width="23" height="20"/> React Frontend <a name="react-frontend"></a>
-- Here is the Frontend part of the project [book appointment app](https://github.com/Ibnballo1/book_appointment_frontend.git)
+- Here is the Frontend part of the project [book appointment app](https://github.com/jorgegoco/roomster-front-end)
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
@@ -114,18 +114,6 @@ Install this project with:
 
 ```sh
   bundle install
-```
-- Generate a secret key using `rails secret`
-- Create a  `.env` file with the following content:
-```
-POSTGRES_USER=postgres
-# If you declared a password when creating the database:
-POSTGRES_PASSWORD=YourPassword
-POSTGRES_HOST=localhost
-POSTGRES_DB=Hello_Rails_Backend_development
-POSTGRES_TEST_DB=Hello_Rails_Backend_test
-# Devise secret key
-DEVISE_JWT_SECRET_KEY=Secret Key you generated
 ```
 
 Create a Database (Mandatory)
@@ -196,8 +184,8 @@ bundle exec rspec
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **[Admin Roles and access to add new rental rooms]**
-- [ ] **[Keep count of the rooms using addtional attribute]**
+- [ ] **Admin Roles and access to add new rental rooms**
+- [ ] **Keep count of the rooms using addtional attribute**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -207,7 +195,7 @@ bundle exec rspec
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](../../issues/).
+Feel free to check the [issues page](https://github.com/jorgegoco/roomster-back-end/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
