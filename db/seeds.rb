@@ -5,8 +5,10 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+value = Rails.application.credentials.adm
+
 User.create([
-  {name: 'Admin', email: 'admin@gmail.com', password: ENV['USER_PASSWORD'], role: 'admin'}
+  {name: 'Admin', email: 'admin@gmail.com', password: value, role: 'admin'}
 ])
 
 Room.create([
